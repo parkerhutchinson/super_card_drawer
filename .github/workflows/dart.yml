@@ -8,7 +8,8 @@ name: Dart-Analyze
 on: [push]
 
 jobs:
-  analyze:
+
+  analyze_expand_drawer:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -32,7 +33,7 @@ jobs:
         run: dart analyze --fatal-infos
         if: always() && steps.install.outcome == 'success'
 
-  analyze:
+  analyze_reveal_drawer:
     runs-on: ubuntu-latest
     defaults:
       run:
