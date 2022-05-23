@@ -1,5 +1,5 @@
 name: Test project in a PR
-on: [pull_request]
+on: [push]
 jobs:
   test_mac:
     runs-on: macos-latest
