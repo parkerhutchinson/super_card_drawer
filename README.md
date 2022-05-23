@@ -1,3 +1,5 @@
+[![Test project in a PR](https://github.com/parkerhutchinson/super_card_drawer/actions/workflows/main.yml/badge.svg)](https://github.com/parkerhutchinson/super_card_drawer/actions/workflows/main.yml)
+
 CardExpandDrawer is a UI widget that uses swipe gestures horizontally or vertically to reveal a drawer. The drawer can be functional or asthetic, the widgets for the drawer and the card are provide by you. This only handles the swipe to reveal functionality.
 
 ## Features
