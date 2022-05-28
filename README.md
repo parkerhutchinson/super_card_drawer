@@ -2,6 +2,8 @@
 
 CardExpandDrawer and CardRevealDrawer are UI widgets that uses swipe gestures horizontally or vertically to reveal a drawer. The widgets for the drawer and the card are provide by you. This only handles the swipe to reveal functionality. See [example CardRevealDrawer](https://github.com/parkerhutchinson/super_card_drawer/blob/main/card_reveal_drawer/example/lib/main.dart) or [example CardExpandDrawer](https://github.com/parkerhutchinson/super_card_drawer/blob/main/card_expand_drawer/example/lib/main.dart)
 
+![super_card_graphic](https://user-images.githubusercontent.com/122406/170841398-268a6ba9-c9fe-478d-a6b7-643060b7b754.png)
+
 ## Features
 
 1. Vertical and Horizontal card layouts.
