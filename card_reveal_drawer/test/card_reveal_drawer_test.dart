@@ -1,4 +1,4 @@
-import 'package:card_expand_drawer/card_expand_drawer.dart';
+import 'package:card_reveal_drawer/card_reveal_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -8,7 +8,7 @@ void main() {
   group('CardExpandDrawer', () {
     testWidgets('component renders', (WidgetTester tester) async {
       final cardWidget = MaterialWidgetWrap(
-        child: CardExpandDrawer(
+        child: CardRevealDrawer(
           dragThreshold: .3,
           size: const Size(
             300,

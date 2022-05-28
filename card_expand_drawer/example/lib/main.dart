@@ -86,33 +86,32 @@ class TopCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: const Color.fromRGBO(219, 174, 174, 1),
-          borderRadius: const BorderRadius.all(Radius.circular(20)),
-          border: Border.all(color: Colors.black, width: 8),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: const [Text('testing')],
-            ),
-            Row(
-              children: [
-                Container(
-                    child: const CircleAvatar(
-                  radius: 20,
-                )),
-                Container(
-                    child: const CircleAvatar(
-                  radius: 20,
-                ))
-              ],
-            )
-          ],
-        ));
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: const Color.fromRGBO(219, 174, 174, 1),
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        border: Border.all(color: Colors.black, width: 8),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: const [Text('testing')],
+          ),
+          Row(
+            children: const [
+              CircleAvatar(
+                radius: 20,
+              ),
+              CircleAvatar(
+                radius: 20,
+              )
+            ],
+          )
+        ],
+      ),
+    );
   }
 }
 
