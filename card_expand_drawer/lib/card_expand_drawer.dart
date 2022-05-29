@@ -9,8 +9,38 @@ enum Direction {
 }
 
 class CardExpandDrawer extends HookWidget {
+  /// Applies a background to the card container, mostly used to debug gutters.
+  final Color? backgroundColor;
+
+  /// Top Card Widget
+  final Widget card;
+
+  /// enum of drawer open directions defaults to `leftToRight`
+  /// possible values are `leftToRight, rightToLeft, topToBottom, bottomToTop`
+  final Direction direction;
+
+  /// drawer Widget
+  final Widget drawer;
+
+  /// How large should the drawer size be.
+  ///
+  /// NOTE: this will make the gutter between other widgets
+  /// increase. The increase is deterministic, its exactly
+  /// half the drawer size(on either side). this has to do with the issue
+  /// above with GestureDetector.
+  final double drawerSize;
+
   // 0.0 - 1.0 gets percentage of container width as drag threshold
   final double dragThreshold;
+
+  /// callback when the drawer is closed
+  final Function? onDrawerClosed;
+
+  /// callback when the drawer is opened
+  final Function? onDrawerOpened;
+
+  /// callback when the drawer is tapped
+  final Function? onDrawerTap;
 
   /// Size is required for the workaround for GestureDetector.
   /// GestureDetectors hitbox gets cut off when positioned
@@ -23,38 +53,8 @@ class CardExpandDrawer extends HookWidget {
   /// to be interactive.
   final Size size;
 
-  /// How large should the drawer size be.
-  ///
-  /// NOTE: this will make the gutter between other widgets
-  /// increase. The increase is deterministic, its exactly
-  /// half the drawer size(on either side). this has to do with the issue
-  /// above with GestureDetector.
-  final double drawerSize;
-
-  /// drawer Widget
-  final Widget drawer;
-
-  /// Top Card Widget
-  final Widget card;
-
-  /// Applies a background to the card container, mostly used to debug gutters.
-  final Color? backgroundColor;
-
-  /// callback when the drawer is tapped
-  final Function? onDrawerTap;
-
-  /// callback when the drawer is opened
-  final Function? onDrawerOpened;
-
-  /// callback when the drawer is closed
-  final Function? onDrawerClosed;
-
   /// Alt interaction that removes the swipe to close with tapping the drawer to close.
   final bool? tapDrawerClose;
-
-  /// enum of drawer open directions defaults to `leftToRight`
-  /// possible values are `leftToRight, rightToLeft, topToBottom, bottomToTop`
-  final Direction direction;
 
   /// example:
   /// ```
@@ -93,11 +93,11 @@ class CardExpandDrawer extends HookWidget {
   /// ),
   /// ```
   const CardExpandDrawer({
-    required this.dragThreshold,
     required this.size,
     required this.drawerSize,
     required this.drawer,
     required this.card,
+    this.dragThreshold = 0.4,
     this.backgroundColor,
     this.onDrawerTap,
     this.onDrawerClosed,

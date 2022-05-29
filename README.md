@@ -5,12 +5,12 @@
 CardExpandDrawer and CardRevealDrawer are UI widgets that uses swipe gestures horizontally or vertically to reveal a drawer. The widgets for the drawer and the card are provide by you. This only handles the swipe to reveal functionality. See [example CardRevealDrawer](https://github.com/parkerhutchinson/super_card_drawer/blob/main/card_reveal_drawer/example/lib/main.dart) or [example CardExpandDrawer](https://github.com/parkerhutchinson/super_card_drawer/blob/main/card_expand_drawer/example/lib/main.dart)
 
 
-## Features
+### Features
 
 1. Vertical and Horizontal card layouts.
 2. only the swipe gestures and directional movement are governed by this widget. all card and drawer widgets provided by the user. aka fully customizable widgets look and feel. 
 
-## Getting started
+### Getting started
 
 ```dart
 CardRevealDrawer(
@@ -46,8 +46,102 @@ CardRevealDrawer(
   ),
 ),
 ```
-see /example for detailed examples.
+### Properties
 
-## Additional information
+---
+
+| Property | Type |
+| :-- | :-- |
+| backgroundColor | Color? | 
+
+Set background of container that holds the two cards. mostly used to debug the margins created when using CardExpandDrawer.
+
+---
+
+| Property | Type |
+| :-- | :-- |
+| card | Widget | 
+
+Top most widget that covers the drawer. 
+
+---
+
+| Property | Type |
+| :-- | :-- |
+| direction | Direction | 
+
+Governs the direction the top card moves to reveal the drawer. defaults to *leftToRight*. Possible values are `leftToRight` `rightToLeft` `topToBottom` `bottomToTOp`
+
+---
+
+| Property | Type |
+| :-- | :-- |
+| drawer | Widget | 
+
+drawer widget that sits underneath the card widget. this widget and card are entirely up to the user to implement. so if the drawer reveals UI that is interactive its up to you to set the proper alignment.
+
+---
+
+| Property | Type |
+| :-- | :-- |
+| drawerSize | double | 
+
+Sets the width or height the drawer reveals. With CardExpandDrawer this also affects how much margin there is. 
+
+Unfortunetly Flutters current renderer prevents Positioned widgets from being interactive if they bleed the container. 
+See this issue https://github.com/flutter/flutter/issues/19445 for more details. so the gutters are added to the two positioned elements to allow the expanded version to be interactive. If this is undesirable use CardRevealDrawer instead.  
+
+
+
+---
+
+| Property | Type |
+| :-- | :-- |
+| dragThreshold | double | 
+
+Ratio betwee 0.0 to 1.0 that determines how easy the swipe is to reveal the drawer. Ratio is based on drawer size vs  1.0 will prevent the drawer from sticking open. While 0.0 will cause the drawer to open immediately almost without the swipe finishing. This defaults to 0.4 which feels fairly natural. 
+
+---
+
+| Property | Type |
+| :-- | :-- |
+| onDrawerClosed | Function? | 
+
+Function callback for when the drawer is closed.
+
+---
+
+| Property | Type |
+| :-- | :-- |
+| onDrawerOpened | Function? | 
+
+Function callback for when the drawer is opened.
+
+---
+
+| Property | Type |
+| :-- | :-- |
+| onDrawerTap | Function? | 
+
+Function callback for when the drawer is tapped. This only applies to drawers that you want to treat as a giant button instead of a container for other interactive elements. Requirees `tapDrawerClose: true` to be set.  
+
+---
+
+| Property | Type |
+| :-- | :-- |
+| size | Size |
+
+Sets the size of the card and drawer to fill the container to make this effect work properly. 
+
+---
+
+| Property | Type |
+| :-- | :-- |
+| tapDrawerClose | bool |
+
+Optional property to make it so the drawer closes on tap. this only really works if there are no interactive elements in the drawer itself. 
+
+
+### Additional information
 
 This is a for fun UI package so if issues arise or breaking changes occur no garauntees that it will get fixed in a timely manor. see license about warranty or maintenace. 
