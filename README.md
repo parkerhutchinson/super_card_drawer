@@ -112,6 +112,14 @@ Function callback for when the drawer is closed.
 
 | Property | Type |
 | :-- | :-- |
+| onDrawerDrag | Function(double value)? | 
+
+Function callback for when the drawer is dragged. returns pixels the drawer has been dragged. Note: this doesn't currently represent when the drawer animates open or animates closed. Only the dragged value is returned.
+
+---
+
+| Property | Type |
+| :-- | :-- |
 | onDrawerOpened | Function? | 
 
 Function callback for when the drawer is opened.

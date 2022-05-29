@@ -34,13 +34,17 @@ class CardRevealDrawer extends HookWidget {
   final double dragVelocity;
 
   /// callback when the drawer is closed
-  final Function? onDrawerClosed;
+  final VoidCallback? onDrawerClosed;
+
+  /// callback that is called while the card is dragging,
+  /// returns double in pixels dragged.
+  final Function(double value)? onDrawerDrag;
 
   /// callback when the drawer is opened
-  final Function? onDrawerOpened;
+  final VoidCallback? onDrawerOpened;
 
   /// callback when the drawer is tapped
-  final Function? onDrawerTap;
+  final VoidCallback? onDrawerTap;
 
   /// Size is required for the workaround for GestureDetector.
   /// GestureDetectors hitbox gets cut off when positioned
@@ -101,6 +105,7 @@ class CardRevealDrawer extends HookWidget {
     this.backgroundColor,
     this.onDrawerTap,
     this.onDrawerClosed,
+    this.onDrawerDrag,
     this.onDrawerOpened,
     this.tapDrawerClose = false,
     this.direction = Direction.leftToRight,
@@ -159,6 +164,9 @@ class CardRevealDrawer extends HookWidget {
                     currentOffset: dragState.value,
                     drawerSize: drawerSize,
                   );
+                  if (onDrawerDrag != null) {
+                    onDrawerDrag!(dragState.value);
+                  }
                 },
                 onPanEnd: (details) {
                   isDragging.value = false;
