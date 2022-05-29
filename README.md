@@ -1,6 +1,9 @@
 [![Tests](https://github.com/parkerhutchinson/super_card_drawer/actions/workflows/main.yml/badge.svg)](https://github.com/parkerhutchinson/super_card_drawer/actions/workflows/main.yml) [![Dart-Analyze](https://github.com/parkerhutchinson/super_card_drawer/actions/workflows/dart.yml/badge.svg)](https://github.com/parkerhutchinson/super_card_drawer/actions/workflows/dart.yml)
 
+![super_card_graphic](https://user-images.githubusercontent.com/122406/170841630-dde35b26-21d2-4241-ab09-6bd1bb9e813d.png)
+
 CardExpandDrawer and CardRevealDrawer are UI widgets that uses swipe gestures horizontally or vertically to reveal a drawer. The widgets for the drawer and the card are provide by you. This only handles the swipe to reveal functionality. See [example CardRevealDrawer](https://github.com/parkerhutchinson/super_card_drawer/blob/main/card_reveal_drawer/example/lib/main.dart) or [example CardExpandDrawer](https://github.com/parkerhutchinson/super_card_drawer/blob/main/card_expand_drawer/example/lib/main.dart)
+
 
 ## Features
 
