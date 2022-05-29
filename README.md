@@ -15,7 +15,7 @@ CardExpandDrawer and CardRevealDrawer are UI widgets that uses swipe gestures ho
 ```dart
 CardRevealDrawer(
   backgroundColor: Colors.blueGrey,
-  dragThreshold: .3,
+  dragVelocity: 20,
   size: const Size(500, 400),
   drawerSize: 120,
   topCard: Container(
