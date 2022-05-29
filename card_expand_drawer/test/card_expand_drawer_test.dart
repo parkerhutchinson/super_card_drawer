@@ -9,7 +9,7 @@ void main() {
     testWidgets('component renders', (WidgetTester tester) async {
       final cardWidget = MaterialWidgetWrap(
         child: CardExpandDrawer(
-          dragThreshold: .3,
+          dragVelocity: 20,
           size: const Size(
             300,
             300,

@@ -23,7 +23,7 @@ class App extends StatelessWidget {
               return Column(
                 children: [
                   CardExpandDrawer(
-                    dragThreshold: .3,
+                    dragVelocity: 20,
                     size: Size(
                       MediaQuery.of(context).size.width - 20,
                       300,
@@ -36,7 +36,7 @@ class App extends StatelessWidget {
                     onDrawerOpened: () => print('opened'),
                   ),
                   CardExpandDrawer(
-                    dragThreshold: .3,
+                    dragVelocity: 20,
                     size: Size(
                       MediaQuery.of(context).size.width - 20,
                       300,
@@ -46,30 +46,6 @@ class App extends StatelessWidget {
                     drawer: const Drawer(),
                     direction: Direction.leftToRight,
                   ),
-                  // ListView(
-                  //   children: [
-                  //     Column(
-                  //       children: const [
-                  //         CardExpandDrawer(
-                  //           dragThreshold: .3,
-                  //           size: Size(400, 300),
-                  //           drawerSize: 90,
-                  //           card: TopCard(),
-                  //           drawer: Drawer(),
-                  //           direction: Direction.leftToRight,
-                  //         ),
-                  //         CardExpandDrawer(
-                  //           dragThreshold: .3,
-                  //           size: Size(400, 300),
-                  //           drawerSize: 90,
-                  //           card: TopCard(),
-                  //           drawer: Drawer(),
-                  //           direction: Direction.rightToLeft,
-                  //         ),
-                  //       ],
-                  //     )
-                  //   ],
-                  // ),
                 ],
               );
             }),
