@@ -30,8 +30,8 @@ class CardExpandDrawer extends HookWidget {
   /// above with GestureDetector.
   final double drawerSize;
 
-  // 0.0 - 1.0 gets percentage of container width as drag threshold
-  final double dragThreshold;
+  /// pixels per second, determines how easy the drawer is to open.
+  final double dragVelocity;
 
   /// callback when the drawer is closed
   final Function? onDrawerClosed;
@@ -97,7 +97,7 @@ class CardExpandDrawer extends HookWidget {
     required this.drawerSize,
     required this.drawer,
     required this.card,
-    this.dragThreshold = 0.4,
+    this.dragVelocity = 15,
     this.backgroundColor,
     this.onDrawerTap,
     this.onDrawerClosed,
@@ -105,13 +105,14 @@ class CardExpandDrawer extends HookWidget {
     this.tapDrawerClose = false,
     this.direction = Direction.leftToRight,
     super.key,
-  }) : assert(dragThreshold <= 1 && dragThreshold >= 0);
+  });
 
   @override
   Widget build(BuildContext context) {
     ValueNotifier<double> dragState = useState<double>(0);
     ValueNotifier<bool> isDragging = useState(false);
     ValueNotifier<bool> open = useState(false);
+
     bool isVertical =
         direction.name == 'bottomToTop' || direction.name == 'topToBottom';
     return Container(
@@ -171,12 +172,13 @@ class CardExpandDrawer extends HookWidget {
                   double detailsVelocity = isVertical
                       ? details.velocity.pixelsPerSecond.dy
                       : details.velocity.pixelsPerSecond.dx;
+                  // bool isThresholdMet =
 
                   if (direction.name == 'leftToRight' ||
                       direction.name == 'bottomToTop') {
                     dragState.value = detailsVelocity > 15 ? drawerSize : 0;
                     open.value = detailsVelocity > 15 ? true : false;
-                    if (detailsVelocity > 15) {
+                    if (detailsVelocity > dragVelocity) {
                       if (onDrawerOpened != null) {
                         onDrawerOpened!();
                       }
@@ -189,9 +191,10 @@ class CardExpandDrawer extends HookWidget {
 
                   if (direction.name == 'rightToLeft' ||
                       direction.name == 'topToBottom') {
-                    dragState.value = detailsVelocity < 15 ? -drawerSize : 0;
-                    open.value = detailsVelocity < 15 ? true : false;
-                    if (detailsVelocity < 15) {
+                    dragState.value =
+                        detailsVelocity < dragVelocity ? -drawerSize : 0;
+                    open.value = detailsVelocity < dragVelocity ? true : false;
+                    if (detailsVelocity < dragVelocity) {
                       if (onDrawerOpened != null) {
                         onDrawerOpened!();
                       }

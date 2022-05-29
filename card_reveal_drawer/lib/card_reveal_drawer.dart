@@ -9,8 +9,38 @@ enum Direction {
 }
 
 class CardRevealDrawer extends HookWidget {
-  // 0.0 - 1.0 gets percentage of container width as drag threshold
-  final double dragThreshold;
+  /// Applies a background to the card container, mostly used to debug gutters.
+  final Color? backgroundColor;
+
+  /// Top Card Widget
+  final Widget card;
+
+  /// enum of drawer open directions defaults to `leftToRight`
+  /// possible values are `leftToRight, rightToLeft, topToBottom, bottomToTop`
+  final Direction direction;
+
+  /// drawer Widget
+  final Widget drawer;
+
+  /// How large should the drawer size be.
+  ///
+  /// NOTE: this will make the gutter between other widgets
+  /// increase. The increase is deterministic, its exactly
+  /// half the drawer size(on either side). this has to do with the issue
+  /// above with GestureDetector.
+  final double drawerSize;
+
+  /// pixels per second, determines how easy the drawer is to open.
+  final double dragVelocity;
+
+  /// callback when the drawer is closed
+  final Function? onDrawerClosed;
+
+  /// callback when the drawer is opened
+  final Function? onDrawerOpened;
+
+  /// callback when the drawer is tapped
+  final Function? onDrawerTap;
 
   /// Size is required for the workaround for GestureDetector.
   /// GestureDetectors hitbox gets cut off when positioned
@@ -23,38 +53,8 @@ class CardRevealDrawer extends HookWidget {
   /// to be interactive.
   final Size size;
 
-  /// How large should the drawer size be.
-  ///
-  /// NOTE: this will make the gutter between other widgets
-  /// increase. The increase is deterministic, its exactly
-  /// half the drawer size(on either side). this has to do with the issue
-  /// above with GestureDetector.
-  final double drawerSize;
-
-  /// drawer Widget
-  final Widget drawer;
-
-  /// Top Card Widget
-  final Widget card;
-
-  /// Applies a background to the card container, mostly used to debug gutters.
-  final Color? backgroundColor;
-
-  /// callback when the drawer is tapped
-  final Function? onDrawerTap;
-
-  /// callback when the drawer is opened
-  final Function? onDrawerOpened;
-
-  /// callback when the drawer is closed
-  final Function? onDrawerClosed;
-
   /// Alt interaction that removes the swipe to close with tapping the drawer to close.
   final bool? tapDrawerClose;
-
-  /// enum of drawer open directions defaults to `leftToRight`
-  /// possible values are `leftToRight, rightToLeft, topToBottom, bottomToTop`
-  final Direction direction;
 
   /// example:
   /// ```
@@ -93,11 +93,11 @@ class CardRevealDrawer extends HookWidget {
   /// ),
   /// ```
   const CardRevealDrawer({
-    required this.dragThreshold,
     required this.size,
     required this.drawerSize,
     required this.drawer,
     required this.card,
+    this.dragVelocity = 15,
     this.backgroundColor,
     this.onDrawerTap,
     this.onDrawerClosed,
@@ -105,7 +105,7 @@ class CardRevealDrawer extends HookWidget {
     this.tapDrawerClose = false,
     this.direction = Direction.leftToRight,
     super.key,
-  }) : assert(dragThreshold <= 1 && dragThreshold >= 0);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -168,8 +168,9 @@ class CardRevealDrawer extends HookWidget {
 
                   if (direction.name == 'leftToRight' ||
                       direction.name == 'bottomToTop') {
-                    dragState.value = detailsVelocity > 15 ? drawerSize : 0;
-                    open.value = detailsVelocity > 15 ? true : false;
+                    dragState.value =
+                        detailsVelocity > dragVelocity ? drawerSize : 0;
+                    open.value = detailsVelocity > dragVelocity ? true : false;
                     if (detailsVelocity > 15) {
                       if (onDrawerOpened != null) {
                         onDrawerOpened!();
@@ -183,9 +184,10 @@ class CardRevealDrawer extends HookWidget {
 
                   if (direction.name == 'rightToLeft' ||
                       direction.name == 'topToBottom') {
-                    dragState.value = detailsVelocity < 15 ? -drawerSize : 0;
-                    open.value = detailsVelocity < 15 ? true : false;
-                    if (detailsVelocity < 15) {
+                    dragState.value =
+                        detailsVelocity < dragVelocity ? -drawerSize : 0;
+                    open.value = detailsVelocity < dragVelocity ? true : false;
+                    if (detailsVelocity < dragVelocity) {
                       if (onDrawerOpened != null) {
                         onDrawerOpened!();
                       }

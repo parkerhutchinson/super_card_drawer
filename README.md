@@ -92,14 +92,13 @@ Unfortunetly Flutters current renderer prevents Positioned widgets from being in
 See this issue https://github.com/flutter/flutter/issues/19445 for more details. so the gutters are added to the two positioned elements to allow the expanded version to be interactive. If this is undesirable use CardRevealDrawer instead.  
 
 
-
 ---
 
 | Property | Type |
 | :-- | :-- |
-| dragThreshold | double | 
+| dragVelocity | double | 
 
-Ratio betwee 0.0 to 1.0 that determines how easy the swipe is to reveal the drawer. Ratio is based on drawer size vs  1.0 will prevent the drawer from sticking open. While 0.0 will cause the drawer to open immediately almost without the swipe finishing. This defaults to 0.4 which feels fairly natural. 
+Determines how easy the swipe is to reveal the drawer. Measured in pixels per-second, defaults to 15. Increase the amount to make it hard to open or decrease the amount to make it easier.
 
 ---
 
@@ -141,6 +140,7 @@ Sets the size of the card and drawer to fill the container to make this effect w
 
 Optional property to make it so the drawer closes on tap. this only really works if there are no interactive elements in the drawer itself. 
 
+---
 
 ### Additional information
 
