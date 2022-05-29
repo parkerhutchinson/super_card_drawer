@@ -36,6 +36,8 @@ class CardRevealDrawer extends HookWidget {
   /// callback when the drawer is closed
   final VoidCallback? onDrawerClosed;
 
+  /// callback that is called while the card is dragging,
+  /// returns double in pixels dragged.
   final Function(double value)? onDrawerDrag;
 
   /// callback when the drawer is opened
