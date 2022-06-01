@@ -64,7 +64,7 @@ class CardRevealDrawer extends HookWidget {
   /// ```
   /// CardExpandDrawer(
   ///   backgroundColor: Colors.red,
-  ///   dragThreshold: .3,
+  ///   dragVelocity: 15,
   ///   size: Size(400, 300),
   ///   drawerSize: 200,
   ///   direction: Direction.topToBottom,

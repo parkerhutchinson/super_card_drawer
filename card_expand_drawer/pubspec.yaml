@@ -1,6 +1,11 @@
 name: card_expand_drawer
-description: A new Flutter package project.
-version: 0.0.1
+description: >-
+  CardExpandDrawer is a UI widget package. Consists of a card widget
+  which obstructs a drawer widget underneath. Upon swiping the card it reveals the drawer
+  widget. This only handles the setup and swipe animations, all widgets for card and drawer
+  are user provided.
+
+version: 0.3.0-beta
 homepage:
 
 environment:

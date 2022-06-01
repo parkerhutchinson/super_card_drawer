@@ -1,4 +1,4 @@
-name: card_reveal_drawer
+name: super_card_drawer
 description: >-
   CardRevealDrawer is a UI widget package. Consists of a card widget
   which obstructs a drawer widget underneath. Upon swiping the card it reveals the drawer
