@@ -36,6 +36,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  card_expand_drawer:
+    dependency: "direct overridden"
+    description:
+      path: "../card_expand_drawer"
+      relative: true
+    source: path
+    version: "0.3.0-beta"
+  card_reveal_drawer:
+    dependency: "direct overridden"
+    description:
+      path: "../card_reveal_drawer"
+      relative: true
+    source: path
+    version: "0.3.0-beta"
   characters:
     dependency: transitive
     description:
