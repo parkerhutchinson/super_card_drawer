@@ -1,5 +1,5 @@
 name: card_reveal_drawer
-description: CardRevealDrawer is a UI widget package. Consists of a card widget
+description: CardRevealDrawer is a UI widget. Consists of a card widget
   which obstructs a drawer widget underneath. Upon swiping the card it reveals the drawer
   widget. This only handles the setup and swipe animations, all widgets for card and drawer
   are user provided.
@@ -13,7 +13,6 @@ dependencies:
   flutter_hooks: ^0.18.4
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
 
 dev_dependencies:
   test: ^1.21.1

@@ -1,6 +1,6 @@
 name: super_card_drawer
 description: 
-  Super Card Drawer is a 
+  Super Card Drawer is a collection of packages that help making swipe to reveal drawers trivial.
 
 version: 0.3.0-beta
 
@@ -11,8 +11,6 @@ dependencies:
   flutter_hooks: ^0.18.4
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
-
 
 dependency_overrides:
   card_reveal_drawer: 
@@ -27,4 +25,3 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
-  uses-material-design: true
