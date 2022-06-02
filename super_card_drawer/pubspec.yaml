@@ -1,8 +1,9 @@
 name: super_card_drawer
 description: 
   Super Card Drawer is a collection of packages that help making swipe to reveal drawers trivial.
-
 version: 0.3.0-beta
+homepage: https://github.com/parkerhutchinson/super_card_drawer
+
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
